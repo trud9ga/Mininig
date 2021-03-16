@@ -163,44 +163,19 @@ DynamicAdapt.prototype.arraySort = function (arr) {
 
 const da = new DynamicAdapt("max");
 da.init();
-let tabletIcon = document.querySelector(".tablet-icon");
-if (tabletIcon != null) {
-	let delay = 500;
-	let tabletMenu = document.querySelector(".tablet__body");
-	let overflow = document.querySelector(".ovf");
-	iconMenu.addEventListener("click", function (e) {
-		if (unlock) {
-			body_lock(delay);
-			tabletIcon.classList.toggle("_active");
-			overflow.classList.toggle("_active");
-			tabletMenu.classList.toggle("_active");
-		}
-	});
-	overflow.addEventListener("click", function (e) {
-		if (unlock) {
-			body_lock(delay);
-			tabletIcon.classList.toggle("_active");
-			overflow.classList.toggle("_active");
-			tabletMenu.classList.toggle("_active");
-		}
-	});
-};
-function menu_close() {
-	let iconMenu = document.querySelector(".tablet-icon");
-	let tabletMenu = document.querySelector(".tablet__body");
-	let overflow = document.querySelector(".ovf");
-	iconMenu.classList.remove("_active");
-	tabletMenu.classList.remove("_active");
-	overflow.classList.remove("_active");
-};
-
-
 let moreBlock = document.querySelector("._see-more");
 let seeMoreBody = document.querySelector(".slider__row");
 if (moreBlock != null) {
 	moreBlock.addEventListener("click", function (e) {
 		moreBlock.classList.toggle("_active");
 		seeMoreBody.classList.toggle("_active")
+		window.addEventListener('resize', function () {
+			let width = window.innerWidth;
+			if (width <= 767) {
+				moreBlock.classList.add("_active");
+				seeMoreBody.classList.add("_active")
+			}
+		})
 	});
 };
 function more_close() {
@@ -209,43 +184,50 @@ function more_close() {
 }
 
 
-window.addEventListener('resize', function () {
-	let width = window.innerWidth;
-	if (width <= 767) {
-		moreBlock.classList.add("_active");
-		seeMoreBody.classList.add("_active")
-	}
-})
-
 
 
 let tabletMenu = document.querySelector(".tablet-menu");
-let tabletBody = document.querySelector(".tablet__body");
-let tabletOvf = document.querySelector(".tablet__overflow");
+let tabletBody = document.querySelector(".tablet-body");
+let tabletOvf = document.querySelector(".tablet-overflow");
+let mobileClose = document.querySelector(".mobile-icon");
 if (tabletMenu != null) {
 	let delay = 500;
-	tabletBody.addEventListener("click", function (e) {
+	tabletMenu.addEventListener("click", function (e) {
 		if (unlock) {
 			body_lock(delay);
 			tabletMenu.classList.toggle("_active");
-			menuBody.classList.toggle("_active");
+			tabletBody.classList.toggle("_active");
 			tabletOvf.classList.toggle("_active");
+			mobileClose.classList.toggle("_active");
 		}
 	});
 	tabletOvf.addEventListener("click", function (e) {
 		if (unlock) {
 			body_lock(delay);
 			tabletMenu.classList.toggle("_active");
-			menuBody.classList.toggle("_active");
+			tabletBody.classList.toggle("_active");
 			tabletOvf.classList.toggle("_active");
+			mobileClose.classList.toggle("_active");
+		}
+	});
+	mobileClose.addEventListener("click", function (e) {
+		if (unlock) {
+			body_lock(delay);
+			tabletMenu.classList.toggle("_active");
+			tabletBody.classList.toggle("_active");
+			tabletOvf.classList.toggle("_active");
+			mobileClose.classList.toggle("_active");
+
 		}
 	});
 };
 function menu_close() {
-	iconMenu.classList.remove("_active");
-	menuBody.classList.remove("_active");
+	tabletMenu.classList.remove("_active");
+	tabletBody.classList.remove("_active");
 	tabletOvf.classList.remove("_active");
+	mobileClose.classList.toggle("_active");
 }
+
 var ua = window.navigator.userAgent;
 var msie = ua.indexOf("MSIE ");
 var isMobile = { Android: function () { return navigator.userAgent.match(/Android/i); }, BlackBerry: function () { return navigator.userAgent.match(/BlackBerry/i); }, iOS: function () { return navigator.userAgent.match(/iPhone|iPad|iPod/i); }, Opera: function () { return navigator.userAgent.match(/Opera Mini/i); }, Windows: function () { return navigator.userAgent.match(/IEMobile/i); }, any: function () { return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows()); } };

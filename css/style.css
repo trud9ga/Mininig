@@ -2069,10 +2069,22 @@ body.ie ._ibg img {
   font-size: 13px;
 }
 
+._no-webp .top{
+  background: url("../img/home/slide-1.png") 0 0/cover no-repeat; }
+
+.top__title {
+  font-size: 22px !important;
+  font-size: 600px;
+  line-height: 30px;
+  padding: 15px 0px 15px 15px;
+  color: #fff;
+}
+
 .graphic__container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  margin-bottom: 10px;
 }
 
 .graphic__chart {
@@ -2206,6 +2218,10 @@ body.ie ._ibg img {
 
 .anychart-credits {
   display: none !important;
+}
+
+#ac_layer_1l {
+  display: none;
 }
 
 /*! nouislider - 14.6.0 - 6/27/2020 */
@@ -3153,6 +3169,7 @@ h6 {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  font-size: 0;
 }
 
 ._filter::before {
@@ -3167,6 +3184,30 @@ h6 {
 
 ._filter:hover::before {
   content: url(../img/icons/filter-hv.svg);
+}
+
+._filter._active {
+  background: #fff;
+  width: 320px;
+  height: 50px;
+  top: -116px;
+  z-index: 5;
+  left: 0;
+  border-radius: 0;
+  position: absolute;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 25px;
+  display: block;
+  padding: 15px 40px;
+}
+
+._filter._active::before {
+  z-index: 6;
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  content: url(../img/icons/filter-emp.svg);
 }
 
 ._mobile-visible {
@@ -3323,6 +3364,43 @@ h6 {
   display: none;
 }
 
+.tablet-menu {
+  display: none;
+}
+
+.mobile-icon {
+  visibility: hidden;
+}
+
+.mobile-icon._active {
+  visibility: visible;
+  position: absolute;
+  right: 30px;
+  top: 25px;
+}
+
+.mobile-icon._active::before {
+  content: '';
+  width: 20px;
+  height: 2px;
+  background: #000;
+  position: absolute;
+  -webkit-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+
+.mobile-icon._active::after {
+  content: '';
+  width: 20px;
+  height: 2px;
+  background: #000;
+  position: absolute;
+  -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
 @-webkit-keyframes slide-bottom {
   0% {
     -webkit-transform: translateY(100px);
@@ -3389,8 +3467,123 @@ h6 {
     font-size: 18px;
   }
 
+  .graphic__container {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    position: relative;
+  }
+
+  .graphic__title {
+    position: absolute;
+    top: 120px;
+    z-index: 2;
+  }
+
+  .graphic__top .cards__checkboxes {
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+
+  .graphic .side {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 0%;
+            flex: 0 0 0%;
+    margin: 0;
+  }
+
   ._help {
     display: none;
+  }
+
+  .tablet-menu {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    overflow: hidden;
+  }
+
+  .tablet-menu._active {
+    z-index: 15;
+  }
+
+  .tablet-menu._active::after {
+    content: url(../img/icons/tablet-1.svg);
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    background: rgba(255, 255, 255, 0.5);
+    position: absolute;
+    left: 320px;
+    height: 100vh;
+    width: 50px;
+    z-index: 15;
+    top: -116px;
+  }
+
+  .tablet-body {
+    display: none;
+    overflow: hidden;
+  }
+
+  .tablet-body._active {
+    display: block;
+    position: absolute;
+    z-index: 15;
+    background: #fff;
+    width: 320px;
+    height: 100vh;
+    top: -66px;
+    max-height: 100vh;
+  }
+
+  .tablet-overflow {
+    visibility: hidden;
+    position: absolute;
+  }
+
+  .tablet-overflow._active {
+    visibility: visible;
+    position: absolute;
+    z-index: 10;
+    background: #000;
+    opacity: 0.8;
+    width: 100vh;
+    height: 100%;
+    right: 0;
+    top: 0;
+    max-height: 100vh;
+    overflow: hidden;
+  }
+}
+
+@media (max-width: 991.98px) and (max-width: 767.98px) {
+  .tablet-menu._active {
+    left: -10px;
+  }
+
+  .tablet-body {
+    left: -10px;
+    padding: 0px 0px 0px 15px !important;
+  }
+}
+
+@media (max-width: 991.98px) and (max-width: 479.98px) {
+  .tablet-menu._active {
+    left: 0;
+  }
+
+  .tablet-body._active {
+    width: 100%;
+    left: 0;
   }
 }
 
@@ -3803,4 +3996,14 @@ h6 {
     bottom: 50%;
     height: 10%;
   }
+
+  .graphic__column .cards__period {
+    display: none;
+  }
+
+  .graphic__top .cards__checkboxes {
+    width: 170px;
+  }
 }
+
+._webp .top{ background: url(../img/home/slide-1.webp) 0 0/cover no-repeat; }
