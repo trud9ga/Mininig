@@ -217,6 +217,35 @@ window.addEventListener('resize', function () {
 	}
 })
 
+
+
+let tabletMenu = document.querySelector(".tablet-menu");
+let tabletBody = document.querySelector(".tablet__body");
+let tabletOvf = document.querySelector(".tablet__overflow");
+if (tabletMenu != null) {
+	let delay = 500;
+	tabletBody.addEventListener("click", function (e) {
+		if (unlock) {
+			body_lock(delay);
+			tabletMenu.classList.toggle("_active");
+			menuBody.classList.toggle("_active");
+			tabletOvf.classList.toggle("_active");
+		}
+	});
+	tabletOvf.addEventListener("click", function (e) {
+		if (unlock) {
+			body_lock(delay);
+			tabletMenu.classList.toggle("_active");
+			menuBody.classList.toggle("_active");
+			tabletOvf.classList.toggle("_active");
+		}
+	});
+};
+function menu_close() {
+	iconMenu.classList.remove("_active");
+	menuBody.classList.remove("_active");
+	tabletOvf.classList.remove("_active");
+}
 var ua = window.navigator.userAgent;
 var msie = ua.indexOf("MSIE ");
 var isMobile = { Android: function () { return navigator.userAgent.match(/Android/i); }, BlackBerry: function () { return navigator.userAgent.match(/BlackBerry/i); }, iOS: function () { return navigator.userAgent.match(/iPhone|iPad|iPod/i); }, Opera: function () { return navigator.userAgent.match(/Opera Mini/i); }, Windows: function () { return navigator.userAgent.match(/IEMobile/i); }, any: function () { return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows()); } };
